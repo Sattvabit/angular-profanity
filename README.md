@@ -1,2 +1,2 @@
-# angular-profanity(Under Devlopment Not Ready)
-AngularJS profanity filter
+# angular-profanity
+AngularJS profanity filter(Under Devlopment Not Ready)
