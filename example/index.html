@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html ng-app="demoApp">
+<head >
+	<title>Angular Profanity Demo</title>
+	<script type="text/javascript" src="../bower/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../bower/angular/angular.js"></script>
+	
+
+	<script type="text/javascript" src="../bower/jQuery.ProfanityFilter/jquery.profanityfilter.js"></script>
+	<script type="text/javascript" src="../dist/angular-profanity.js"></script>
+
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- <link href="styles.css" type="text/css" rel="stylesheet"/> -->
+	
+	<style>
+		xmp.prettyprint.box {
+		    border: 1px solid;
+		    overflow-x: scroll;
+		}
+		.example.box {
+		    border: 1px solid #0ABB0A;
+		}
+		#six .six-highlight {
+			color: red;
+			text-decoration:underline;
+			font-weight: bold;
+			background-color:yellow;
+			padding: .2em;
+		}
+	</style>
+</head>
+<body cz-shortcut-listen="true" ng-controller="MainCtrl">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+		<div class="navbar-header">
+			
+			<a class="navbar-brand" href="#">Sattvabit</a>
+		</div>
+		
+		</div>
+	</nav>
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<div class="container">
+		<h1>Angular Profanity !</h1>
+		<p>
+			A simple client side AngularJS profanity directive based on jQuery.ProfanityFilter jquery plugin.
+		</p>
+		<p>
+			<a class="btn btn-primary btn-lg" href="https://github.com/Sattvabit/angular-profanity" role="button">View on Github »</a>
+		</p>
+		</div>
+	</div>
+
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-md-12">
+			<h2> Example 1 </h2>
+<xmp class="prettyprint box">
+// code:
+in controller
+$scope.customSwears = ['ass'];
+
+// html:
+<div class="example box" profanity-filter custom-swears="customSwears">
+	Often when I go to the bathroom, shit comes out of my ass.
+</div>
+</xmp>
+				<div class="description-example-wrapper">
+					<div class="description box">
+						This container will filter the word "ass" but will not filter "shit"
+					</div>
+					<div id="one" class="example box" profanity-filter custom-swears="customSwears">
+						Often when I go to the bathroom, shit comes out of my ass.
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+			<h2> Example 2 </h2>
+<xmp class="prettyprint box">
+// code:
+in controller
+$scope.customSwears = ['ass'];
+$scope.externalSwears = 'swearWords.json';
+
+// html:
+<div id="two" class="example box" profanity-filter external-swears="externalSwears.json" custom-swears="customSwears">
+    Often when I go to the bathroom, shit comes out of my ass.
+</div>
+</xmp>
+		        <div class="description-example-wrapper">
+		            <div class="description box">
+		                This container will filter both the words "shit" and "ass"
+		            </div>
+		            <div id="two" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears">
+		                Often when I go to the bathroom, shit comes out of my ass.
+		            </div>
+		        </div>
+			</div>
+			<div class="col-md-12">
+			<h2> Example 3 </h2>
+<xmp class="prettyprint code box">
+// code:
+in controller
+$scope.customSwears = ['ass'];
+$scope.externalSwears = 'swearWords.json';
+$scope.replaceWith = ['fun', 'stuff'];
+
+// html:
+<div id="three" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWith">
+    Often when I go to the bathroom, shit comes out of my ass.
+</div>
+</xmp>
+		        <div class="description-example-wrapper">
+		            <div class="description box">
+		                This container will filter both the words "shit" and "ass", but will also change the replacement
+		                character from an asterisk (*) a random word listed in the `replaceWith` array.
+		            </div>
+		            <div id="three" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWith">
+		                Often when I go to the bathroom, shit comes out of my ass.
+		            </div>
+		       	</div>
+			</div>
+			<div class="col-md-12">
+			<h2> Example 4 </h2>
+<xmp class="prettyprint code box">
+// code:
+in controller
+$scope.customSwears = ['ass'];
+$scope.externalSwears = 'swearWords.json';
+$scope.replaceWithHash = '#';
+
+// html:
+<div id="four" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWithHash">
+    Often when I go to the bathroom, shit comes out of my ass.
+</div>
+</xmp>
+		        <div class="description-example-wrapper">
+                    <div class="description box">
+                        This container will filter both the words "shit" and "ass", but will also change the replacement
+                        character from an asterisk (*) to a pound sign (#)
+                    </div>
+                    <div id="four" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWithHash">
+                        Often when I go to the bathroom, shit comes out of my ass.
+                    </div>
+                </div>
+			</div>
+			<div class="col-md-12">
+			<h2> Example 5 </h2>
+<xmp class="prettyprint code box">
+// code:
+in controller
+$scope.customSwears = ['ass'];
+$scope.externalSwears = 'swearWords.json';
+$scope.replaceWithHash = '#';
+$scope.profaneText = function(data, element) {
+	console.log('profane text ',data, element);
+	element.css('color', 'blue');
+};
+
+// html:
+<div id="four" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWithHash" filter="false" profane-text="profaneText">
+    Often when I go to the bathroom, shit comes out of my ass.
+</div>
+</xmp>
+		        <div class="description-example-wrapper">
+                    <div class="description box">
+                        This container won't filter anything, but it will do something clever because
+                    	it contains the word "ass"
+                    </div>
+                    <div id="four" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWithHash" filter="false" profane-text="profaneText">
+                        Often when I go to the bathroom, shit comes out of my ass.
+                    </div>
+                </div>
+			</div>
+<div class="col-md-12">
+			<h2> Example 6 </h2>
+<xmp class="prettyprint code box">
+// code:
+in controller
+$scope.customSwears = ['ass'];
+$scope.externalSwears = 'swearWords.json';
+$scope.replaceWithHash = '#';
+$scope.profaneTextSix = function(data, element) {
+	data.forEach(function (swearWord, index) {
+	    var str = '<span class="six-highlight">' + swearWord + '</span>';
+	    element.html(element.html().replace(swearWord, str));
+	});
+};
+
+// html:
+<div id="four" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWithHash" filter="false" profane-text="profaneTextSix">
+    Often when I go to the bathroom, shit comes out of my ass.
+</div>
+</xmp>
+		        <div class="description-example-wrapper">
+                    <div class="description box">
+                        This container won't filter anything, but it will do something clever with the swears that it finds.
+                    </div>
+                    <div id="four" class="example box" profanity-filter external-swears="swearWords.json" custom-swears="customSwears" replace-with="replaceWithHash" filter="false" profane-text="profaneTextSix">
+                        Often when I go to the bathroom, shit comes out of my ass.
+                    </div>
+                </div>
+			</div>
+		</div>
+
+		<hr>
+
+		<footer>
+		<p>© Sattvabit 2015</p>
+		</footer>
+	</div> <!-- /container -->
+
+</body>
+
+</html>

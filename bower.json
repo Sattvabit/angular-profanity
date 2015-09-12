@@ -1,0 +1,26 @@
+{
+  "name": "angular-profanity",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Vinesh Patel",
+      "email": "vineshhpatel@gmail.com"
+    }
+  ],
+  "main": ["dist/angular-profanity.js"],
+  "ignore": [
+    "src",
+    "test",
+    "gulpfile.js",
+    "karma-*.conf.js",
+    "**/.*"
+  ],
+  "dependencies": {
+    "jQuery.ProfanityFilter": "latest"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.2.0",
+    "angular-scenario": ">=1.2.0",
+    "angular": ">=1.2.0"
+  }
+}
